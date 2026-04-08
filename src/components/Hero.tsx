@@ -1,9 +1,13 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Sparkles, MousePointer2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import avatarImage from "@/assets/Avtaar.png";
 
+const gmailComposeHref = "https://mail.google.com/mail/?view=cm&fs=1&to=vishalroy2574@gmail.com";
+
 const Hero = () => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section
       id="home"
@@ -13,50 +17,41 @@ const Hero = () => {
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
         <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.3, 0.2]
-          }}
-          transition={{ duration: 8, repeat: Infinity }}
-          className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-primary/30 rounded-full blur-[120px]" 
+          animate={prefersReducedMotion ? false : { scale: [1, 1.12, 1], opacity: [0.18, 0.24, 0.18] }}
+          transition={prefersReducedMotion ? undefined : { duration: 10, repeat: Infinity }}
+          className="absolute top-1/4 -left-32 hidden md:block w-[420px] h-[420px] bg-primary/25 rounded-full blur-[80px]" 
         />
         <motion.div 
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.3, 0.2]
-          }}
-          transition={{ duration: 8, repeat: Infinity, delay: 1 }}
-          className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-accent/30 rounded-full blur-[120px]" 
+          animate={prefersReducedMotion ? false : { scale: [1.08, 1, 1.08], opacity: [0.16, 0.24, 0.16] }}
+          transition={prefersReducedMotion ? undefined : { duration: 10, repeat: Infinity, delay: 1 }}
+          className="absolute bottom-1/4 -right-32 hidden md:block w-[420px] h-[420px] bg-accent/25 rounded-full blur-[80px]" 
         />
         <motion.div 
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 10, repeat: Infinity, delay: 2 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-[100px]" 
+          animate={prefersReducedMotion ? false : { scale: [1, 1.12, 1], opacity: [0.08, 0.16, 0.08] }}
+          transition={prefersReducedMotion ? undefined : { duration: 12, repeat: Infinity, delay: 2 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[560px] md:h-[560px] bg-gradient-to-r from-primary/18 to-accent/18 rounded-full blur-[72px] md:blur-[100px]" 
         />
         
         {/* Grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(78,205,196,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(78,205,196,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
         
         {/* Floating particles */}
-        {[...Array(6)].map((_, i) => (
+        {!prefersReducedMotion && [...Array(4)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-primary/40 rounded-full"
+            className="absolute hidden md:block w-1 h-1 bg-primary/40 rounded-full"
             style={{
-              left: `${15 + i * 15}%`,
-              top: `${20 + (i % 3) * 25}%`,
+              left: `${20 + i * 18}%`,
+              top: `${22 + (i % 2) * 28}%`,
             }}
             animate={{
-              y: [-20, 20, -20],
-              opacity: [0.2, 0.6, 0.2],
+              y: [-14, 14, -14],
+              opacity: [0.2, 0.55, 0.2],
             }}
             transition={{
-              duration: 4 + i,
+              duration: 5 + i,
               repeat: Infinity,
-              delay: i * 0.5,
+              delay: i * 0.4,
             }}
           />
         ))}
@@ -131,8 +126,8 @@ const Hero = () => {
                   View Resume
                   <motion.span
                     className="ml-1"
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    animate={prefersReducedMotion ? undefined : { x: [0, 4, 0] }}
+                    transition={prefersReducedMotion ? undefined : { duration: 1.5, repeat: Infinity }}
                   >
                     →
                   </motion.span>
@@ -152,8 +147,8 @@ const Hero = () => {
             >
               {[
                 { icon: Github, href: "https://github.com/Vishalroy2574", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/in/vishal-kumar", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:vishalroy2574@gmail.com", label: "Email" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/vishalroy2574/", label: "LinkedIn" },
+                { icon: Mail, href: gmailComposeHref, label: "Email" },
               ].map(({ icon: Icon, href, label }, index) => (
                 <motion.a
                   key={index}
@@ -181,8 +176,8 @@ const Hero = () => {
             <div className="relative">
               {/* Rotating gradient ring */}
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                animate={prefersReducedMotion ? false : { rotate: 360 }}
+                transition={prefersReducedMotion ? undefined : { duration: 24, repeat: Infinity, ease: "linear" }}
                 className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-20 blur-xl"
               />
               
@@ -199,8 +194,8 @@ const Hero = () => {
                 
                 {/* Shine effect */}
                 <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                  animate={prefersReducedMotion ? false : { rotate: [0, 360] }}
+                  transition={prefersReducedMotion ? undefined : { duration: 10, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-0 rounded-full"
                   style={{
                     background: "conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,0.1) 10deg, transparent 20deg)",
@@ -210,23 +205,23 @@ const Hero = () => {
               
               {/* Floating tech badges */}
               <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -top-2 -right-2 px-4 py-2 glass rounded-xl text-sm font-semibold text-primary border border-primary/30 shadow-lg"
+                animate={prefersReducedMotion ? false : { y: [-8, 8, -8] }}
+                transition={prefersReducedMotion ? undefined : { duration: 5, repeat: Infinity }}
+                className="absolute -top-2 -right-2 hidden lg:block px-4 py-2 glass rounded-xl text-sm font-semibold text-primary border border-primary/30 shadow-lg"
               >
                 ⚛️ React.js
               </motion.div>
               <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -bottom-2 -left-2 px-4 py-2 glass rounded-xl text-sm font-semibold text-accent border border-accent/30 shadow-lg"
+                animate={prefersReducedMotion ? false : { y: [8, -8, 8] }}
+                transition={prefersReducedMotion ? undefined : { duration: 5, repeat: Infinity }}
+                className="absolute -bottom-2 -left-2 hidden lg:block px-4 py-2 glass rounded-xl text-sm font-semibold text-accent border border-accent/30 shadow-lg"
               >
                 ☕ Java
               </motion.div>
               <motion.div
-                animate={{ y: [-5, 15, -5] }}
-                transition={{ duration: 5, repeat: Infinity }}
-                className="absolute top-1/2 -right-6 px-4 py-2 glass rounded-xl text-sm font-semibold text-green-400 border border-green-400/30 shadow-lg"
+                animate={prefersReducedMotion ? false : { y: [-5, 10, -5] }}
+                transition={prefersReducedMotion ? undefined : { duration: 6, repeat: Infinity }}
+                className="absolute top-1/2 -right-6 hidden lg:block px-4 py-2 glass rounded-xl text-sm font-semibold text-green-400 border border-green-400/30 shadow-lg"
               >
                 🚀 Node.js
               </motion.div>
@@ -243,8 +238,8 @@ const Hero = () => {
         >
           <motion.a
             href="#about"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            animate={prefersReducedMotion ? undefined : { y: [0, 8, 0] }}
+            transition={prefersReducedMotion ? undefined : { duration: 1.5, repeat: Infinity }}
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
           >
             <span className="text-sm font-medium">Scroll to explore</span>

@@ -3,14 +3,13 @@ import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/Vishalroy2574", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/vishal-kumar", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:vishalroy2574@gmail.com", label: "Email" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/vishalroy2574/", label: "LinkedIn" },
+  { icon: Mail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=vishalroy2574@gmail.com", label: "Email" },
 ];
 
 const quickLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
@@ -98,9 +97,9 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h4 className="font-bold text-lg mb-4">Get In Touch</h4>
-              <p>📧 vishalroy2574@gmail.com</p>
-              <p>📱 +91 7903533974</p>
-              <p>📍 Greater Noida, U.P</p>
+              <p className="text-muted-foreground mb-2"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vishalroy2574@gmail.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors underline">📧 vishalroy2574@gmail.com</a></p>
+              <p className="text-muted-foreground mb-2">📱 +91 7903533974</p>
+              <p className="text-muted-foreground">📍 Greater Noida, U.P</p>
             <motion.button
               onClick={scrollToTop}
               whileHover={{ scale: 1.05 }}

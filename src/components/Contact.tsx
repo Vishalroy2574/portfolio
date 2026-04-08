@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useReducedMotion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Mail, MapPin, Phone, Sparkles, MessageCircle, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Send, Mail, MapPin, Phone, Sparkles, MessageCircle, ArrowRight, CheckCircle2, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,7 +11,7 @@ const contactInfo = [
     icon: Mail,
     label: "Email",
     value: "vishalroy2574@gmail.com",
-    href: "mailto:vishalroy2574@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=vishalroy2574@gmail.com",
     color: "from-cyan-500 to-teal-500",
   },
   {
@@ -21,6 +20,13 @@ const contactInfo = [
     value: "+91 7903533974",
     href: "tel:+917903533974",
     color: "from-violet-500 to-purple-500",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/vishalroy2574",
+    href: "https://www.linkedin.com/in/vishalroy2574/",
+    color: "from-sky-500 to-blue-600",
   },
   {
     icon: MapPin,
@@ -34,6 +40,7 @@ const contactInfo = [
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const prefersReducedMotion = useReducedMotion();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -85,9 +92,9 @@ const Contact = () => {
     <section id="contact" className="py-32 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl" />
+        <div className={`absolute top-1/4 left-0 hidden md:block w-96 h-96 rounded-full blur-3xl ${prefersReducedMotion ? "" : "animate-pulse"} bg-primary/10`} />
+        <div className={`absolute bottom-1/4 right-0 hidden md:block w-96 h-96 rounded-full blur-3xl ${prefersReducedMotion ? "" : "animate-pulse"}`} style={{ animationDelay: "1s", backgroundColor: "hsl(var(--accent) / 0.1)" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] md:w-[600px] md:h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-2xl md:blur-3xl" />
       </div>
 
       {/* Grid pattern overlay */}
@@ -144,6 +151,8 @@ const Contact = () => {
                 <motion.a
                   key={info.label}
                   href={info.href}
+                  target={info.href.startsWith("http") ? "_blank" : undefined}
+                  rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}

@@ -132,8 +132,7 @@
   .gradient-text {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-mid)), hsl(var(--gradient-end)));
-    background-size: 200% 200%;
-    animation: gradient-shift 5s ease infinite;
+    background-size: 100% 100%;
   }
 
   .gradient-border {
@@ -322,4 +321,21 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .floating,
+  .floating-delayed,
+  .text-gradient-animate,
+  .animate-float,
+  .animate-marquee,
+  .animate-pulse-glow,
+  .animate-spin-slow,
+  .gradient-text {
+    animation: none !important;
+  }
 }

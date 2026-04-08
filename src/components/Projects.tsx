@@ -5,10 +5,20 @@ import { ExternalLink, Github, Layers, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import projUrbanNivas from "@/assets/UrbanNiwas_pic.jpg.png";
 import projNetflix from "@/assets/netflix_clone.jpg";
-import projCarScroll from "@/assets/f1_car_racing.png";
+import projRoadDamage from "@/assets/Road-damage-imagee.png";
 import projLocalPro from "@/assets/localpro_image.jpg";
 
 const projects = [
+  {
+    title: "Multi-Model Road Damage Detection",
+    description:
+      "A road damage detection project focused on identifying and analyzing damaged road surfaces with multiple model approaches. Built to support smarter infrastructure inspection and reporting workflows.",
+    tech: ["Machine Learning", "Computer Vision", "Python", "Deep Learning"],
+    github: "https://github.com/Vishalroy2574/Multi-Model-Road-Damage-Detection",
+    live: "https://multi-model-road-damage-detection-1.onrender.com/",
+    image: projRoadDamage,
+    color: "from-emerald-500 to-teal-500",
+  },
   {
     title: "UrbanNivas– Rental Listing Platform",
     description:
@@ -19,26 +29,8 @@ const projects = [
     image: projUrbanNivas,
     color: "from-violet-500 to-purple-500",
   },
-  {
-    title: "Netflix Clone",
-    description:
-      "A responsive, visually engaging clone of Netflix showcasing movies and TV shows. Built with React.js using an external TMDB API for data.",
-    tech: ["React.js", "Tailwind CSS", "JavaScript", "TMDB API"],
-    github: "https://github.com/Vishalroy2574/netflix-clone",
-    live: "https://redflixbyvishal.netlify.app/",
-    image: projNetflix,
-    color: "from-cyan-500 to-blue-500",
-  },
-  {
-    title: "Car Scroll Experience",
-    description:
-      "An interactive scrolling experience built with HTML, CSS, and modern JavaScript, featuring smooth animations and a premium UI layout.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/Vishalroy2574/car-scroll",
-    live: "https://car-scroll-pi.vercel.app",
-    image: projCarScroll,
-    color: "from-emerald-500 to-teal-500",
-  },
+ 
+ 
   {
     title: "LocalPro",
     description:
@@ -49,6 +41,16 @@ const projects = [
     image: projLocalPro,
     color: "from-blue-500 to-indigo-500",
   },
+   {
+    title: "Netflix Clone",
+    description:
+      "A responsive, visually engaging clone of Netflix showcasing movies and TV shows. Built with React.js using an external TMDB API for data.",
+    tech: ["React.js", "Tailwind CSS", "JavaScript", "TMDB API"],
+    github: "https://github.com/Vishalroy2574/netflix-clone",
+    live: "https://redflixbyvishal.netlify.app/",
+    image: projNetflix,
+    color: "from-cyan-500 to-blue-500",
+  }
 ];
 
 const Projects = () => {
@@ -114,11 +116,25 @@ const Projects = () => {
                   {/* Gradient overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10`} />
                   
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-110 p-2"
-                  />
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-110 p-2"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center p-6">
+                      <div className="max-w-md text-center">
+                        <div className={`mx-auto mb-4 w-20 h-20 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center shadow-lg`}>
+                          <span className="text-white font-bold text-2xl">RD</span>
+                        </div>
+                        <h4 className="text-xl font-bold mb-2">{project.title}</h4>
+                        <p className="text-sm text-muted-foreground">
+                          GitHub repository
+                        </p>
+                      </div>
+                    </div>
+                  )}
                   
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4 z-20">
@@ -132,14 +148,18 @@ const Projects = () => {
                     >
                       <Github size={24} />
                     </motion.a>
-                    <motion.a
-                      href={project.live}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="p-4 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
-                    >
-                      <ExternalLink size={24} />
-                    </motion.a>
+                    {project.live && (
+                      <motion.a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="p-4 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
+                      >
+                        <ExternalLink size={24} />
+                      </motion.a>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -182,13 +202,17 @@ const Projects = () => {
                     <Github size={20} />
                     <span className="font-medium group-hover:underline">View Code</span>
                   </a>
-                  <a
-                    href={project.live}
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <ExternalLink size={20} />
-                    <span className="font-medium group-hover:underline">Live Demo</span>
-                  </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                    >
+                      <ExternalLink size={20} />
+                      <span className="font-medium group-hover:underline">Live Demo</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
