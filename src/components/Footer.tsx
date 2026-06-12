@@ -10,6 +10,7 @@ const socialLinks = [
 const quickLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
@@ -63,6 +64,8 @@ const Footer = () => {
                   <link.icon size={20} />
                 </motion.a>
               ))}
+              <a href="https://cnc-test-series3.onrender.com/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl glass border-border/50 hover:border-primary/50 hover:text-primary transition-all duration-300 flex items-center px-4">Live</a>
+              <a href="https://github.com/Vishalroy2574/TestingPhase" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl glass border-border/50 hover:border-primary/50 hover:text-primary transition-all duration-300 flex items-center px-4">Code</a>
             </div>
           </motion.div>
 
