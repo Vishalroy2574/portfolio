@@ -7,13 +7,20 @@ const skillCategories = [
   {
     title: "Programming",
     emoji: "💻",
-    skills: ["Java", "JavaScript", "SQL", "HTML", "CSS"],
+    skills: ["Java", "JavaScript", "TypeScript", "SQL", "HTML", "CSS"],
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     title: "Web Development",
     emoji: "🎨",
-    skills: ["React.js", "Node.js", "Express.js", "RESTful APIs"],
+    skills: [
+      "React.js",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "RESTful APIs",
+    ],
     gradient: "from-purple-500 to-pink-500",
   },
   {
@@ -22,6 +29,7 @@ const skillCategories = [
     skills: [
       "MongoDB",
       "Firebase",
+      "Supabase",
       "Git",
       "GitHub",
       "VS Code",
@@ -38,6 +46,7 @@ const skillCategories = [
       "Data Structures",
       "Algorithms",
       "Operating Systems",
+      "JWT",
     ],
     gradient: "from-emerald-500 to-teal-500",
   },
@@ -45,16 +54,17 @@ const skillCategories = [
 
 const techLogos = [
   { name: "Java", emoji: "☕" },
+  { name: "TypeScript", emoji: "🔷" },
   { name: "React.js", emoji: "⚛️" },
   { name: "Node.js", emoji: "🟢" },
   { name: "Express.js", emoji: "⚡" },
   { name: "MongoDB", emoji: "🍃" },
+  { name: "Supabase", emoji: "☁️" },
   { name: "SQL", emoji: "💾" },
   { name: "JavaScript", emoji: "🟨" },
-  { name: "HTML", emoji: "📄" },
-  { name: "CSS", emoji: "🎨" },
+  { name: "Tailwind CSS", emoji: "🎨" },
   { name: "Firebase", emoji: "🔥" },
-  { name: "Git", emoji: "📦" }
+  { name: "Git", emoji: "📦" },
 ];
 
 const Skills = () => {

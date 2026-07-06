@@ -2,18 +2,29 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    role: "Freelance Full Stack Developer",
-    company: "CNC Test Series Platform",
-    period: "2025 - Present",
+    role: "Node.js Backend Intern",
+    company: "Talentrise Technokrate Pvt. Ltd.",
+    period: "Jun 2026 - Present",
     bullets: [
-      "Developed a full-stack EdTech platform for CA students with modules for Foundation, Inter, and Final exam preparation.",
-      "Implemented secure authentication, authorization, and RESTful APIs using JWT and Express.js.",
-      "Built responsive user interfaces and integrated mock tests, PDF resources, and user management features.",
-      "Managed the complete development lifecycle from client requirement gathering to deployment on Render.",
+      "Built RESTful APIs for an eCommerce platform using Node.js, Express.js, MongoDB, and Mongoose following the MVC architecture.",
+      "Implemented backend modules for product, category, cart, and order management with scalable database schemas and CRUD operations.",
+      "Added request validation with Zod, centralized error handling, and standardized API responses to improve reliability.",
+      "Developed product search and filtering, inventory validation, unique slug generation, and soft/permanent delete workflows.",
+      "Collaborated in Agile development using Git, GitHub, Postman, code reviews, debugging, and daily team coordination.",
+    ],
+  },
+  {
+    role: "Full Stack Developer",
+    company: "UrbanNivas & CNC Test Series Platform",
+    period: "2025 - 2026",
+    bullets: [
+      "Developed a rental listing platform with secure authentication, admin moderation, and image upload integration using Cloudinary and Multer.",
+      "Built a full-stack EdTech platform for CA students with Foundation, Inter, and Final exam preparation modules, mock tests, and PDF resources.",
+      "Implemented JWT-based authentication, authorization, role-based access control, and protected REST APIs for both projects.",
+      "Managed the full development lifecycle from requirement analysis and frontend/backend development to deployment on Render.",
     ],
   },
 ];
-
 const Experience = () => {
   return (
     <section id="experience" className="container mx-auto px-6 py-24">
